@@ -26,10 +26,26 @@ import React, { Component } from 'react'
         return(
           <div className="container-cards">
             {this.state.articles.map(article =>
-              <ArticleCard key={article.id} article={article} />
+              <ArticleCard
+              key={article.id}
+              article={article}
+              deleteArticle={this.deleteArticle}
+            />
             )}
           </div>
         )
+      }
+
+      deleteArticle = id => {
+        ArticleManager.delete(id)
+        .then(() => {
+          ArticleManager.getAll()
+          .then((newArticles) => {
+            this.setState({
+                articles: newArticles
+            })
+          })
+        })
       }
 }
 
