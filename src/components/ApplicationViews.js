@@ -1,11 +1,8 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
-<<<<<<< HEAD
 import FriendList from "./Friends/FriendList";
 import FriendDetail from "./Friends/FriendDetails";
-=======
 import ArticleList from "./Articles/ArticleList";
->>>>>>> mj-news
 
 export default class ApplicationViews extends Component {
 
