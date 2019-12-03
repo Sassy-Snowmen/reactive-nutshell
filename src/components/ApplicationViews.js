@@ -1,9 +1,12 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import MessageCard from "./Messages/MessageCard";
 import EventCard from "./Events/EventCard";
 import TaskCard from "./Tasks/TaskCard"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
+import ArticleForm from './Articles/ArticleForm'
+
 
 
 
@@ -15,10 +18,14 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return <ArticleList />
+            return <ArticleList {...props}/>
             // Remove null and return the component which will show news articles
           }}
         />
+        
+        <Route path="/articles/new" render={(props) => {
+          return <ArticleForm {...props} />
+        }} />
 
         <Route
           exact path="/register" render={props => {
@@ -33,11 +40,11 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show list of friends
           }}
         />
-        
+
 
         <Route
           path="/messages" render={props => {
-            return null
+            return <MessageCard />
             // Remove null and return the component which will show the messages
           }}
         />
