@@ -29,9 +29,7 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show list of friends
           }}
         />
-        <Route path="/friends/:friendId(\d+)" render={(props) => {
-          return <FriendDetail friendId={parseInt(props.match.params.friendId)} {...props}/>
-        }} />
+        
 
         <Route
           path="/messages" render={props => {
