@@ -21,14 +21,16 @@ import React, { Component } from 'react'
     }
 
     render(){
-        console.log("ARTICLE LIST: Render");
-
+        console.log("ArticleList: Render");
+      
         return(
-            <div className="container-cards">
-                {this.state.articles.map(article => <ArticleCard />)}
-            </div>
+          <div className="container-cards">
+            {this.state.articles.map(article =>
+              <ArticleCard key={article.id} article={article} />
+            )}
+          </div>
         )
-    }
+      }
 }
 
 export default ArticleList
