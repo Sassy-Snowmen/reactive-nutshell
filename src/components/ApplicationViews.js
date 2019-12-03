@@ -1,8 +1,10 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import MessageCard from "./Messages/MessageCard";
+import TaskCard from "./Tasks/TaskCard"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
+
 
 export default class ApplicationViews extends Component {
 
@@ -41,7 +43,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/tasks" render={props => {
-            return null
+            return <TaskCard />
             // Remove null and return the component which will show the user's tasks
           }}
         />
