@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import MessageCard from "./Messages/MessageCard";
 
 export default class ApplicationViews extends Component {
 
@@ -30,7 +31,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/messages" render={props => {
-            return null
+            return <MessageCard />
             // Remove null and return the component which will show the messages
           }}
         />
