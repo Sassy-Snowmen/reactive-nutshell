@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import ArticleList from "./Articles/ArticleList";
 
 export default class ApplicationViews extends Component {
 
@@ -9,7 +10,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return null
+            return <ArticleList />
             // Remove null and return the component which will show news articles
           }}
         />
