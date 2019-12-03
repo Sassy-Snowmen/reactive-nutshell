@@ -1,5 +1,7 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import FriendList from "./Friends/FriendList";
+import ArticleList from "./Articles/ArticleList";
 
 export default class ApplicationViews extends Component {
 
@@ -9,7 +11,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return null
+            return <ArticleList />
             // Remove null and return the component which will show news articles
           }}
         />
@@ -23,10 +25,11 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/friends" render={props => {
-            return null
+            return <FriendList />
             // Remove null and return the component which will show list of friends
           }}
         />
+        
 
         <Route
           path="/messages" render={props => {
