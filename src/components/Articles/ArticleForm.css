@@ -58,3 +58,21 @@ fieldset input, fieldset button {
 fieldset .alignRight {
     text-align: right;
 }
+.container-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.card {
+    flex-basis: 100%;
+    margin: 1%;
+    text-align: center;
+}
+.section-content {
+    text-align: center;
+}
+
+.btn {
+    background-color: #6495ED;
+    border: 3px outset #6495ED;
+}

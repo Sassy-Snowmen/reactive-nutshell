@@ -26,11 +26,12 @@ class ArticleForm extends Component {
                 title: this.state.title,
                 synopsis: this.state.synopsis,
                 url: this.state.url,
+                userId: 1,
             };
-
             ArticleManager.post(article)
             .then(() => this.props.history.push("/"));
         }
+
     };
 
     render(){
@@ -40,7 +41,7 @@ class ArticleForm extends Component {
             <form>
                 <fieldset>
                     <div className="formgrid">
-                        <input type="text" required onChange={this.handleFieldChange} id="articleTitle" placeholder="Article name"/>
+                        <input type="text" required onChange={this.handleFieldChange} id="title" placeholder="Article name"/>
                         <label htmlFor="articleTitle">Title</label>
                         <input type="text" required onChange={this.handleFieldChange} id="synopsis"
                         placeholder="Synopsis"
@@ -52,7 +53,7 @@ class ArticleForm extends Component {
                         <label htmlFor="url">Url</label>
                     </div>
                     <div className="alignRight">
-                        <button type="button" disabled={this.state.loadingStatus} onClick={this.constructNewAnimal}>Submit</button>
+                        <button type="button" disabled={this.state.loadingStatus} onClick={this.constructNewArticle}>Submit</button>
                     </div>
                 </fieldset>
             </form>

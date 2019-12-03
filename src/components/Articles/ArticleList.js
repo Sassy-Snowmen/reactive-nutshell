@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 //import the components we will need
 import ArticleCard from './ArticleCard'
 import ArticleManager from '../../Modules/ArticleManager'
+import './ArticleForm.css'
 
 class ArticleList extends Component {
   //define what this component needs to render
