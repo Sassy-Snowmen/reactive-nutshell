@@ -1,15 +1,10 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
-<<<<<<< HEAD
-import FriendList from "./Friends/FriendList";
-import ArticleList from "./Articles/ArticleList";
-import TaskCard from "./Tasks/TaskCard"
-=======
 import TaskCard from "./Tasks/TaskCard"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
 
->>>>>>> 6fcff9a8d9c2bbb24fec7c6fc9a2388ab8cac961
+
 
 export default class ApplicationViews extends Component {
 
