@@ -1,7 +1,6 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import FriendList from "./Friends/FriendList";
-import FriendDetail from "./Friends/FriendDetails";
 import ArticleList from "./Articles/ArticleList";
 
 export default class ApplicationViews extends Component {
@@ -30,9 +29,7 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show list of friends
           }}
         />
-        <Route path="/friends/:friendId(\d+)" render={(props) => {
-          return <FriendDetail friendId={parseInt(props.match.params.friendId)} {...props}/>
-        }} />
+        
 
         <Route
           path="/messages" render={props => {
