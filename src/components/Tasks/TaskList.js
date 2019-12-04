@@ -1,36 +1,44 @@
 import React, { Component } from 'react'
-    //import the components we will need
-    import TaskCard from './TaskCard'
-    import TaskManager from '../../modules/TaskManager'
+//import the components we will need
+import TaskCard from './TaskCard'
+import TaskManager from '../../Modules/TaskManager'
 
-    class TaskList extends Component {
-        //define what this component needs to render
-        state = {
-            tasks: [],
-        }
+class TaskList extends Component {
+  //define what this component needs to render
+  state = {
+    tasks: [],
+  }
 
-    componentDidMount(){
-        console.log("TASKS LIST: ComponentDidMount");
-        //getAll from TaskManager and hang on to that data; put it in state
-        TaskManager.getAll()
-        .then((tasks) => {
-            this.setState({
-                tasks: tasks
-            })
+  componentDidMount() {
+    console.log("TASKS LIST: ComponentDidMount");
+    //getAll from TaskManager and hang on to that data; put it in state
+    TaskManager.getAll()
+      .then((tasks) => {
+        console.log("tasks", tasks)
+        this.setState({
+          tasks: tasks
         })
-    }
+      })
+  }
 
-    render(){
-        console.log("AnimalList: Render");
-      
-        return(
-          <div className="container-cards">
-            {this.state.tasks.map(task =>
-              <TaskCard key={task.id} task={animal} />
-            )}
-          </div>
-        )
-      }
+  render() {
+    console.log("Task List: Render");
+
+    return (
+      <>
+        <section className="section-content">
+          <button type="button" className="button" onClick={() => { this.props.history.push("/task/new") }}>
+            Add Task
+          </button>
+        </section>
+        <div className="container-cards">
+          {this.state.tasks.map(task =>
+            <TaskCard key={task.id} task={task} />
+          )}
+        </div>
+      </>
+    )
+  }
 }
 
 export default TaskList;
