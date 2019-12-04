@@ -19,11 +19,11 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return <ArticleList {...props}/>
+            return <ArticleList {...props} />
             // Remove null and return the component which will show news articles
           }}
         />
-        
+
         <Route path="/articles/new" render={(props) => {
           return <ArticleForm {...props} />
         }} />
@@ -52,7 +52,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/tasks" render={props => {
-            return <TaskList {...props}/>
+            return <TaskList {...props} />
             // Remove null and return the component which will show the user's tasks
           }}
         />
@@ -62,7 +62,13 @@ export default class ApplicationViews extends Component {
 
             return <TaskForm {...props} />
           }}
-          />
+        />
+
+        <Route
+          path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <TaskEditForm {...props} />
+          }}
+        />
 
         <Route
           path="/events" render={props => {
@@ -71,7 +77,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-  
+
 
       </React.Fragment>
     );
