@@ -8,6 +8,7 @@ class ArticleEditForm extends Component {
       title: "",
       synopsis: "",
       url: "",
+      timestamp: "",
       loadingStatus: false,
     };
 
@@ -24,6 +25,7 @@ class ArticleEditForm extends Component {
         id: this.props.match.params.articleId,
         title: this.state.title,
         synopsis: this.state.synopsis,
+        timestamp: this.state.timestamp,
         url: this.state.url,
       };
 
@@ -39,6 +41,7 @@ class ArticleEditForm extends Component {
             title: article.title,
             synopsis: article.synopsis,
             url: article.url,
+            timestamp: article.timestamp,
             loadingStatus: false,
           });
       });

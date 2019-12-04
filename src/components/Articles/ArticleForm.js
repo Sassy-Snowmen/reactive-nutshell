@@ -8,6 +8,7 @@ class ArticleForm extends Component {
         synopsis: "",
         url:"",
         loadingStatus: false,
+        timestamp: "",
     };
 
     handleFieldChange = evt => {
@@ -27,6 +28,7 @@ class ArticleForm extends Component {
                 synopsis: this.state.synopsis,
                 url: this.state.url,
                 userId: 1,
+                timestamp: new Date().toISOString()
             };
             ArticleManager.post(article)
             .then(() => this.props.history.push("/"));
