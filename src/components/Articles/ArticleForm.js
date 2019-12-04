@@ -8,10 +8,11 @@ class ArticleForm extends Component {
         synopsis: "",
         url:"",
         loadingStatus: false,
+        timestamp: "",
     };
 
     handleFieldChange = evt => {
-        const stateToChange = {};
+        const stateToChange = {}; 
         stateToChange[evt.target.id] = evt.target.value;
         this.setState(stateToChange);
     };
@@ -22,11 +23,14 @@ class ArticleForm extends Component {
             window.alert("Please input an article title, synopsis and Url");
         } else {
             this.setState({ loadingStatus: true });
+            const user = localStorage.getItem("credentials")
+            const userId = parseInt(user)
             const article = {
                 title: this.state.title,
                 synopsis: this.state.synopsis,
                 url: this.state.url,
-                userId: 1,
+                userId: userId,
+                timestamp: new Date().toISOString()
             };
             ArticleManager.post(article)
             .then(() => this.props.history.push("/"));
