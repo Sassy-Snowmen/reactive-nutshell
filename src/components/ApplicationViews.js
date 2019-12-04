@@ -65,24 +65,19 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-<<<<<<< HEAD
           path="/tasks"
           render={props => {
             return <TaskCard />;
-=======
           path="/tasks" render={props => {
             return <TaskList {...props}/>
->>>>>>> master
             // Remove null and return the component which will show the user's tasks
           }}
         />
 
         <Route
-<<<<<<< HEAD
           path="/events"
           render={props => {
             return <EventList />;
-=======
           path="/task/new" render={(props) => {
 
             return <TaskForm {...props} />
@@ -92,22 +87,16 @@ export default class ApplicationViews extends Component {
         <Route
           path="/events" render={props => {
             return < EventList />
->>>>>>> master
             // Remove null and return the component which will show the user's events
           }}
         />
 
-<<<<<<< HEAD
         <Route
           path="/events/new"
           render={props => {
             return <EventForm {...props} />;
           }}
         />
-=======
-  
-
->>>>>>> master
       </React.Fragment>
     );
   }
