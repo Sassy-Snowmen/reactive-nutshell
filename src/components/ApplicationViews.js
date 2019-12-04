@@ -1,6 +1,7 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
-import MessageCard from "./Messages/MessageCard";
+// import MessageCard from "./Messages/MessageCard";
+import MessageList from "./Messages/MessageList";
 import EventCard from "./Events/EventCard";
 import TaskList from "./Tasks/TaskList"
 import TaskForm from "./Tasks/TaskForm"
@@ -60,6 +61,8 @@ export default class ApplicationViews extends Component {
           path="/messages"
           render={props => {
             return <MessageCard />;
+          path="/messages" render={props => {
+            return <MessageList />
             // Remove null and return the component which will show the messages
           }}
         />
