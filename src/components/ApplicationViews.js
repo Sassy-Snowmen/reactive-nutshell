@@ -7,7 +7,8 @@ import TaskForm from "./Tasks/TaskForm"
 import TaskEditForm from "./Tasks/TaskEditForm"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
-import ArticleForm from './Articles/ArticleForm'
+import ArticleForm from './Articles/ArticleForm';
+import ArticleEditForm from './Articles/ArticleEditForm'
 
 
 
@@ -21,6 +22,7 @@ export default class ApplicationViews extends Component {
         <Route
           exact path="/" render={props => {
             return <ArticleList {...props} />
+          
             // Remove null and return the component which will show news articles
           }}
         />
@@ -28,6 +30,11 @@ export default class ApplicationViews extends Component {
         <Route path="/articles/new" render={(props) => {
           return <ArticleForm {...props} />
         }} />
+
+        <Route path="/articles/:articleId(\d+)/edit" render={props => {
+           return <ArticleEditForm {...props} />
+          }}
+        />
 
         <Route
           exact path="/register" render={props => {
