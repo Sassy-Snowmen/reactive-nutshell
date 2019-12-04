@@ -25,9 +25,19 @@ import React, { Component } from 'react'
         console.log("EVENT LIST: Render");
 // When using .map (which is like forEach), each child in the list must have a unique key prop. Because EventCard is included in the render of EVentList, it is considered a child of EventList.
         return(
+            <React.Fragment>
+<section className="section-content">
+  <button type="button"
+      className="btn"
+      onClick={() => {this.props.history.push("/events/new")}}>
+      Add Task
+  </button>
+</section>
+
             <div className="container-cards">
                 {this.state.events.map(eachEvent => <EventCard key={eachEvent.id} event={eachEvent}/>)}
             </div>
+            </React.Fragment>
         )
     }
 }
