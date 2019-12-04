@@ -1,5 +1,9 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import MessageCard from "./Messages/MessageCard";
+import EventCard from "./Events/EventCard";
+import TaskList from "./Tasks/TaskList"
+import TaskForm from "./Tasks/TaskForm"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
 import TaskCard from "./Tasks/TaskCard"
@@ -7,6 +11,7 @@ import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from './Articles/ArticleForm';
 import ArticleEditForm from './Articles/ArticleEditForm'
+
 
 
 
@@ -57,10 +62,17 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/tasks" render={props => {
-            return <TaskCard />
+            return <TaskList {...props}/>
             // Remove null and return the component which will show the user's tasks
           }}
         />
+
+        <Route
+          path="/task/new" render={(props) => {
+
+            return <TaskForm {...props} />
+          }}
+          />
 
         <Route
           path="/events" render={props => {
@@ -68,6 +80,8 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show the user's events
           }}
         />
+
+  
 
       </React.Fragment>
     );
