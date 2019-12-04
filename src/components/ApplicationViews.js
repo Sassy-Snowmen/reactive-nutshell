@@ -2,10 +2,11 @@ import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
-import EventCard from "./Events/EventCard";
 import TaskCard from "./Tasks/TaskCard"
 import MessageCard from "./Messages/MessageCard";
 import ArticleForm from './Articles/ArticleForm'
+import EventList from "./Events/EventList";
+
 
 
 
@@ -57,7 +58,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/events" render={props => {
-            return < EventCard />
+            return < EventList />
             // Remove null and return the component which will show the user's events
           }}
         />

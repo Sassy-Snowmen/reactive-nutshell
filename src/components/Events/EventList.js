@@ -1,37 +1,35 @@
+// Cassie Boyd
+
 import React, { Component } from 'react'
-    import EventCard from './AnimalCard'
-    import EventManager from '../../modules/AnimalManager'
+    import EventCard from './EventCard'
+    import EventManager from '../../Modules/EventManager'
 
     class EventList extends Component {
         //define what this component needs to render
         state = {
-            eventName: [],
-            date: [],
-            location: []
+            events: []
         }
 
     componentDidMount(){
         console.log("EVENT LIST: ComponentDidMount");
         //call getAll from EventManager and hang on to that data and put it in state
         EventManager.getAll()
-        .then((events) => {
+        .then((eventsArray) => {
             this.setState({
-                eventName: eventName,
-                date: date,
-                location: location
+                events: eventsArray
             })
         })
     }
 
     render(){
-        console.log("ANIMAL LIST: Render");
-
+        console.log("EVENT LIST: Render");
+// When using .map (which is like forEach), each child in the list must have a unique key prop. Because EventCard is included in the render of EVentList, it is considered a child of EventList.
         return(
             <div className="container-cards">
-                {this.state.animals.map(animal => <AnimalCard />)}
+                {this.state.events.map(eachEvent => <EventCard key={eachEvent.id} event={eachEvent}/>)}
             </div>
         )
     }
 }
 
-export default AnimalList
+export default EventList
