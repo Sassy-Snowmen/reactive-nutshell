@@ -5,8 +5,8 @@ class MessageCard extends Component {
     return (
       <div className="card">
         <div className="card-content">
-          <h3>Hello</h3>
-          <p>2019-01-01 01:01:01</p>
+          <h3>{this.props.messages.message}</h3>
+          <p>{this.props.messages.timeStamp}</p>
         </div>
       </div>
     );
