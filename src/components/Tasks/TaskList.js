@@ -20,6 +20,17 @@ class TaskList extends Component {
         })
       })
   }
+  deleteTask = id => {
+    TaskManager.delete(id)
+    .then(() => {
+      TaskManager.getAll()
+      .then((newTasks) => {
+        this.setState({
+            tasks: newTasks
+        })
+      })
+    })
+  }
 
   render() {
     console.log("Task List: Render");
@@ -33,7 +44,10 @@ class TaskList extends Component {
         </section>
         <div className="container-cards">
           {this.state.tasks.map(task =>
-            <TaskCard key={task.id} task={task} />
+            <TaskCard key={task.id} 
+            task={task}
+            deleteTask={this.deleteTask}
+            />
           )}
         </div>
       </>
