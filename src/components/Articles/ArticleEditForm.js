@@ -8,7 +8,7 @@ class ArticleEditForm extends Component {
       title: "",
       synopsis: "",
       url: "",
-      loadingStatus: true,
+      loadingStatus: false,
     };
 
     handleFieldChange = evt => {
@@ -32,6 +32,7 @@ class ArticleEditForm extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props.match.params.id)
       ArticleManager.get(this.props.match.params.articleId)
       .then(article => {
           this.setState({
