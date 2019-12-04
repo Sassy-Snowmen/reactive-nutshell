@@ -23,19 +23,19 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/" render={props => {
-            return <ArticleList {...props} />
-          
+            return <ArticleList  {...props} />
             // Remove null and return the component which will show news articles
           }}
         />
+
 
         <Route path="/articles/new" render={(props) => {
           return <ArticleForm {...props} />
         }} />
 
         <Route path="/articles/:articleId(\d+)/edit" render={props => {
-           return <ArticleEditForm {...props} />
-          }}
+          return <ArticleEditForm {...props} />
+        }}
         />
 
         <Route
