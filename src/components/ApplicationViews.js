@@ -1,14 +1,16 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
+import MessageCard from "./Messages/MessageCard";
+import EventCard from "./Events/EventCard";
+import TaskList from "./Tasks/TaskList"
+import TaskForm from "./Tasks/TaskForm"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
-import TaskCard from "./Tasks/TaskCard";
+import TaskCard from "./Tasks/TaskCard"
 import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from './Articles/ArticleForm';
 import ArticleEditForm from './Articles/ArticleEditForm'
-
-
 
 export default class ApplicationViews extends Component {
   render() {
@@ -63,27 +65,49 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
+<<<<<<< HEAD
           path="/tasks"
           render={props => {
             return <TaskCard />;
+=======
+          path="/tasks" render={props => {
+            return <TaskList {...props}/>
+>>>>>>> master
             // Remove null and return the component which will show the user's tasks
           }}
         />
 
         <Route
+<<<<<<< HEAD
           path="/events"
           render={props => {
             return <EventList />;
+=======
+          path="/task/new" render={(props) => {
+
+            return <TaskForm {...props} />
+          }}
+          />
+
+        <Route
+          path="/events" render={props => {
+            return < EventList />
+>>>>>>> master
             // Remove null and return the component which will show the user's events
           }}
         />
 
+<<<<<<< HEAD
         <Route
           path="/events/new"
           render={props => {
             return <EventForm {...props} />;
           }}
         />
+=======
+  
+
+>>>>>>> master
       </React.Fragment>
     );
   }
