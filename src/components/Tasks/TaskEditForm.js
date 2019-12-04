@@ -7,6 +7,7 @@ class TaskEditForm extends Component {
       taskName: "",
       date: "",
       loadingStatus: true,
+      completed: false,
     };
 
     handleFieldChange = evt => {
@@ -20,9 +21,12 @@ class TaskEditForm extends Component {
       evt.preventDefault()
       this.setState({ loadingStatus: true });
       const editedTask = {
+        userId: 1,
         id: this.props.match.params.taskId,
-        name: this.state.taskName,
-        completionDate: this.state.date
+        task: this.state.taskName,
+        completionDate: this.state.date,
+        complete: this.state.completed
+
       };
 
       TaskManager.update(editedTask)
@@ -52,7 +56,7 @@ class TaskEditForm extends Component {
                 className="form-control"
                 onChange={this.handleFieldChange}
                 id="taskName"
-                value={this.state.animalName}
+                value={this.state.taskName}
               />
               <label htmlFor="taskName">Task:</label>
 
@@ -80,4 +84,4 @@ class TaskEditForm extends Component {
     }
 }
 
-export default AnimalEditForm
+export default TaskEditForm

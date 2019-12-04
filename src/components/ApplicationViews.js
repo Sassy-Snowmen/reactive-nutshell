@@ -4,6 +4,7 @@ import MessageCard from "./Messages/MessageCard";
 import EventCard from "./Events/EventCard";
 import TaskList from "./Tasks/TaskList"
 import TaskForm from "./Tasks/TaskForm"
+import TaskEditForm from "./Tasks/TaskEditForm"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
 import ArticleForm from './Articles/ArticleForm'
@@ -51,7 +52,7 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/tasks" render={props => {
+          exact path="/tasks" render={props => {
             return <TaskList {...props} />
             // Remove null and return the component which will show the user's tasks
           }}

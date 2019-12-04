@@ -5,8 +5,11 @@ import React, { Component } from 'react'
 
 class TaskCard extends Component {
 
-    render() {
+    render() 
+
+    {
         return (
+            
             <div className="card">
                 <div className="card-content">
                     <h3>Task: <span className="card-taskname">{this.props.task.task}</span> <input type="checkbox" id="taskCheckbox" /></h3>
@@ -14,10 +17,10 @@ class TaskCard extends Component {
                     <button type="button"
                         onClick={() => this.props.deleteTask(this.props.task.id)}>Discharge</button>
                     <button type="button"
-                        onClick={() => { this.props.history.push(`/tasks/${this.props.animal.id}/edit`) }}>Edit</button>
-
+                        onClick={() =>  this.props.history.push(`/tasks/${this.props.task.id}/edit`) }>Edit</button>
                 </div>
             </div>
+            
 
         )
     }
