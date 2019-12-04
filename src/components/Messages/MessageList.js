@@ -1,21 +1,21 @@
     import React, { Component } from 'react'
     //import the components we will need
     import MessageCard from './MessageCard'
-    import MessageManager from '../../modules/MessageManager'
+    import MessageManager from '../../Modules/MessageManager'
 
     class MessageList extends Component {
         //define what this component needs to render
         state = {
-            animals: [],
+            messages: [],
         }
 
     componentDidMount(){
-        console.log("ANIMAL LIST: ComponentDidMount");
+        console.log("MESSAGE LIST: ComponentDidMount");
         //getAll from MessageManager and hang on to that data; put it in state
         MessageManager.getAll()
-        .then((animals) => {
+        .then((messagesArray) => {
             this.setState({
-                animals: animals
+                messages: messagesArray
             })
         })
     }
@@ -25,10 +25,10 @@
 
         return(
             <div className="container-cards">
-                {this.state.animals.map(animal => <AnimalCard />)}
+                {this.state.messages.map(eachMessage => <MessageCard key={eachMessage.id} messages={eachMessage}/>)}
             </div>
         )
     }
 }
 
-export default AnimalList
+export default MessageList

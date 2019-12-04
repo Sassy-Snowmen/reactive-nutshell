@@ -1,11 +1,12 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
-import MessageCard from "./Messages/MessageCard";
+// import MessageCard from "./Messages/MessageCard";
+import MessageList from "./Messages/MessageList";
 import EventCard from "./Events/EventCard";
-import TaskCard from "./Tasks/TaskCard"
+import TaskCard from "./Tasks/TaskCard";
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
-import ArticleForm from './Articles/ArticleForm'
+import ArticleForm from './Articles/ArticleForm';
 
 
 
@@ -21,7 +22,7 @@ export default class ApplicationViews extends Component {
             // Remove null and return the component which will show news articles
           }}
         />
-        
+
         <Route path="/articles/new" render={(props) => {
           return <ArticleForm {...props} />
         }} />
@@ -43,7 +44,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/messages" render={props => {
-            return <MessageCard />
+            return <MessageList />
             // Remove null and return the component which will show the messages
           }}
         />
