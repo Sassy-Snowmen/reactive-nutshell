@@ -6,6 +6,7 @@ import './index.css'
 
 ReactDOM.render(
   <Router>
-      <Nutshell />
+    {localStorage.setItem("credentials", 2)}
+    <Nutshell />
   </Router>
   , document.getElementById('root'))
