@@ -44,7 +44,7 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/messages" render={props => {
-            return <MessageList />
+            return <MessageList {...props}/>
             // Remove null and return the component which will show the messages
           }}
         />

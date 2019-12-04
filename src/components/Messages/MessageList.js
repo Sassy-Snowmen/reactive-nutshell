@@ -7,6 +7,7 @@
         //define what this component needs to render
         state = {
             messages: [],
+            loadingStatus: false,
         }
 
     componentDidMount(){
@@ -20,8 +21,31 @@
         })
     }
 
+    handleFieldChange = evt => {
+        const stateToChange = {};
+        stateToChange[evt.target.id] = evt.target.value;
+        this.setState(stateToChange);
+    };
+
+    constructNewMessage = evt => {
+        evt.preventDefault();
+        if (this.state.messages === "") {
+            window.alert("Please input a message");
+        } else {
+            // const newMessage = document.getElementById("newMessageInput").value
+            this.setState({ loadingStatus: true });
+            const newMessage = {
+                messages: this.state.newMessage
+            };
+
+            // Create the animal and redirect user to animal list
+            MessageManager.post(newMessage)
+            .then(() => this.props.history.push("/messages"));
+        }
+    };
+
     render(){
-        console.log("ANIMAL LIST: Render");
+        console.log(this.state);
 
         return(
             <React.Fragment>
@@ -32,8 +56,8 @@
                                 <input
                                 type="text"
                                 required
-                                onChange={this.handleFieldChange}
                                 id="newMessageInput"
+                                onChange={this.handleFieldChange}
                                 placeholder="Enter a New Message"
                                 />
                                 <label htmlFor="newMessageInput">Name</label>

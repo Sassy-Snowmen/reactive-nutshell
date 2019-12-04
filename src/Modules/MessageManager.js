@@ -6,5 +6,14 @@ export default {
   },
   getAll() {
     return fetch(`${remoteURL}/messages`).then(result => result.json())
-  }
+  },
+  post(newMessage) {
+    return fetch(`${remoteURL}/messages`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newMessage)
+    }).then(data => data.json())
+}
 }
