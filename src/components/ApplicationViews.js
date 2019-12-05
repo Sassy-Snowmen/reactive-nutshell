@@ -8,12 +8,14 @@ import TaskForm from "./Tasks/TaskForm"
 import TaskEditForm from "./Tasks/TaskEditForm"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
+import Register from './Auth/Register'
 import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from "./Articles/ArticleForm";
 import ArticleEditForm from "./Articles/ArticleEditForm";
 import EventForm from "./Events/EventForm";
 import EventEditForm from "./Events/EventEditForm"
+
 
 export default class ApplicationViews extends Component {
   render() {
@@ -56,16 +58,22 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
+
           path="/messages"
           render={props => {
             return <MessageCard />;
+
+          path="/messages" render={props => {
+            return <MessageList {...props}/>
+            // Remove null and return the component which will show the messages
+
           }}
         />
 
         <Route
           exact path="/tasks" render={props => {
             return <TaskList {...props} />
-            // Remove null and return the component which will show the user's tasks
+        
           }}
         />
 
@@ -83,6 +91,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+
         <Route
           path="/events/new"
           render={props => {
@@ -96,6 +105,13 @@ export default class ApplicationViews extends Component {
             return <EventEditForm {...props} />;
           }}
         />
+
+        <Route
+          path="/register" render={props => {
+            return <Register setUser={this.props.setUser} {...props}{...this.props}/>
+          }}
+        />
+
       </React.Fragment>
     );
   }

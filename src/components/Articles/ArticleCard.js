@@ -1,3 +1,4 @@
+// author: Michelle Johnson
 import React, { Component } from 'react';
 
 class ArticleCard extends Component {

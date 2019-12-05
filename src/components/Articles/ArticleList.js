@@ -1,5 +1,5 @@
+// author: Michelle Johnson
 import React, { Component } from 'react'
-//import the components we will need
 import ArticleCard from './ArticleCard'
 import ArticleManager from '../../Modules/ArticleManager'
 import './ArticleForm.css'
