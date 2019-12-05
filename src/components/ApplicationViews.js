@@ -2,7 +2,6 @@ import { Route } from "react-router-dom";
 import React, { Component } from "react";
 // import MessageCard from "./Messages/MessageCard";
 import MessageList from "./Messages/MessageList";
-import EventCard from "./Events/EventCard";
 import TaskList from "./Tasks/TaskList"
 import TaskForm from "./Tasks/TaskForm"
 import FriendList from "./Friends/FriendList";
@@ -12,7 +11,7 @@ import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from './Articles/ArticleForm';
 import ArticleEditForm from './Articles/ArticleEditForm'
-import EventForm from './Events/EventEditForm'
+import EventForm from './Events/EventForm'
 
 export default class ApplicationViews extends Component {
   render() {
@@ -74,8 +73,8 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/events" render={props => {
-            return < EventList />
+          exact path="/events" render={props => {
+            return < EventList {...props}/>
           }}
         />
 
