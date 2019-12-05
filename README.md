@@ -21,3 +21,6 @@ CSS/Flexbox
 Implementing CRUD operations
 Database Relationships
 
+## ERD
+
+![Sassy-snowmen-ERD](https://user-images.githubusercontent.com/54753720/70275996-e262ea80-1774-11ea-8a7f-2916bf0a8193.png)
