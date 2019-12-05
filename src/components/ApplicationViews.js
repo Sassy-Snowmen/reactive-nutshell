@@ -6,7 +6,6 @@ import TaskList from "./Tasks/TaskList";
 import TaskForm from "./Tasks/TaskForm";
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
-import TaskCard from "./Tasks/TaskCard";
 import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from "./Articles/ArticleForm";
@@ -75,7 +74,7 @@ export default class ApplicationViews extends Component {
         <Route
           path="/tasks"
           render={props => {
-            return <TaskCard />;
+            return <TaskList {...props} />;
           }}
         />
 
