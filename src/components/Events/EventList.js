@@ -30,7 +30,7 @@ import React, { Component } from 'react'
   <button type="button"
       className="btn"
       onClick={() => {this.props.history.push("/events/new")}}>
-      Add Task
+      Add Event
   </button>
 </section>
 

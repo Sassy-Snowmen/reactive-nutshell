@@ -12,6 +12,7 @@ import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from './Articles/ArticleForm';
 import ArticleEditForm from './Articles/ArticleEditForm'
+import EventForm from './Events/EventEditForm'
 
 export default class ApplicationViews extends Component {
   render() {
@@ -61,9 +62,6 @@ export default class ApplicationViews extends Component {
           path="/messages"
           render={props => {
             return <MessageCard />;
-          path="/messages" render={props => {
-            return <MessageList />
-            // Remove null and return the component which will show the messages
           }}
         />
 
@@ -71,26 +69,13 @@ export default class ApplicationViews extends Component {
           path="/tasks"
           render={props => {
             return <TaskCard />;
-          path="/tasks" render={props => {
-            return <TaskList {...props}/>
-            // Remove null and return the component which will show the user's tasks
+
           }}
         />
 
         <Route
-          path="/events"
-          render={props => {
-            return <EventList />;
-          path="/task/new" render={(props) => {
-
-            return <TaskForm {...props} />
-          }}
-          />
-
-        <Route
           path="/events" render={props => {
             return < EventList />
-            // Remove null and return the component which will show the user's events
           }}
         />
 
