@@ -5,12 +5,14 @@ export default {
     return fetch(`${remoteURL}/friends/${id}?_expand=user`).then(result => result.json())
   },
   getAll() {
-    return fetch(`${remoteURL}/friends?_expand=user`).then(result => result.json())
+    const user = localStorage.getItem("credentials")
+    const userId = parseInt(user)
+    return fetch(`${remoteURL}/friends?userId=${userId}&_expand=user`).then(result => result.json())
   },
   delete(id) {
     return fetch(`http://localhost:5002/friends/${id}`, {
-        method: "DELETE"
+      method: "DELETE"
     })
-    .then(result => result.json())
+      .then(result => result.json())
   }
 }

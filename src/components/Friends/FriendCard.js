@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 
 
 class FriendCard extends Component {
@@ -7,7 +6,7 @@ class FriendCard extends Component {
     return (
       <div className="card">
         <div className="card-content">
-          <h3>Username: <Link><span className="card-friendName">{this.props.friend.user.username}</span></Link></h3>
+          <h3>Username: <span className="card-friendName">{this.props.friend.user.username}</span></h3>
 
           <button type="button" onClick={() => this.props.deleteFriend(this.props.friend.id)}>Delete</button>
 
