@@ -9,6 +9,33 @@ export default {
 
 //   Fetch call to get all events
   getAll() {
-    return fetch(`${remoteURL}/events`).then(result => result.json())
+    return fetch(`${remoteURL}/events?_sort=date&_order=asc`).then(result => result.json())
+  },
+
+  post(newEvent) {
+    return fetch(`${remoteURL}/events`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newEvent)
+    }).then(data => data.json())
+},
+
+delete(id) {
+    return fetch(`http://localhost:5002/events/${id}`, {
+        method: "DELETE"
+    })
+    .then(result => result.json())
+  },
+
+  update(editedEvent) {
+    return fetch(`${remoteURL}/events/${editedEvent.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedEvent)
+    }).then(data => data.json());
   }
 }
