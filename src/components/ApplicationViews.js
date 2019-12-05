@@ -2,34 +2,42 @@ import { Route } from "react-router-dom";
 import React, { Component } from "react";
 // import MessageCard from "./Messages/MessageCard";
 import MessageList from "./Messages/MessageList";
-import TaskList from "./Tasks/TaskList"
-import TaskForm from "./Tasks/TaskForm"
+import TaskList from "./Tasks/TaskList";
+import TaskForm from "./Tasks/TaskForm";
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
-import TaskCard from "./Tasks/TaskCard"
+import TaskCard from "./Tasks/TaskCard";
 import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
-import ArticleForm from './Articles/ArticleForm';
-import ArticleEditForm from './Articles/ArticleEditForm'
-import EventForm from './Events/EventForm'
+import ArticleForm from "./Articles/ArticleForm";
+import ArticleEditForm from "./Articles/ArticleEditForm";
+import EventForm from "./Events/EventForm";
+import EventEditForm from "./Events/EventEditForm"
 
 export default class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
         <Route
-          exact path="/" render={props => {
-            return <ArticleList  {...props} />
+          exact
+          path="/"
+          render={props => {
+            return <ArticleList {...props} />;
             // Remove null and return the component which will show news articles
           }}
         />
 
-        <Route path="/articles/new" render={(props) => {
-          return <ArticleForm {...props} />
-        }} />
+        <Route
+          path="/articles/new"
+          render={props => {
+            return <ArticleForm {...props} />;
+          }}
+        />
 
-        <Route path="/articles/:articleId(\d+)/edit" render={props => {
-           return <ArticleEditForm {...props} />
+        <Route
+          path="/articles/:articleId(\d+)/edit"
+          render={props => {
+            return <ArticleEditForm {...props} />;
           }}
         />
 
@@ -68,13 +76,14 @@ export default class ApplicationViews extends Component {
           path="/tasks"
           render={props => {
             return <TaskCard />;
-
           }}
         />
 
         <Route
-          exact path="/events" render={props => {
-            return < EventList {...props}/>
+          exact
+          path="/events"
+          render={props => {
+            return <EventList {...props} />;
           }}
         />
 
@@ -82,6 +91,13 @@ export default class ApplicationViews extends Component {
           path="/events/new"
           render={props => {
             return <EventForm {...props} />;
+          }}
+        />
+
+        <Route
+          path="/events/:eventId(\d+)/edit"
+          render={props => {
+            return <EventEditForm {...props} />;
           }}
         />
       </React.Fragment>

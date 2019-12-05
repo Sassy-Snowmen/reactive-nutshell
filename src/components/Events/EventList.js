@@ -52,6 +52,7 @@ class EventList extends Component {
               key={eachEvent.id}
               event={eachEvent}
               deleteEvent={this.deleteEvent}
+              {...this.props}
             />
           ))}
         </div>
