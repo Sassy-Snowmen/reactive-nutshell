@@ -3,7 +3,7 @@
 import React, { Component } from "react";
 import EventCard from "./EventCard";
 import EventManager from "../../Modules/EventManager";
-import "../../Modules/EventList.css"
+import "./EventList.css"
 
 class EventList extends Component {
   //define what this component needs to render
