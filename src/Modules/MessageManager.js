@@ -5,7 +5,9 @@ export default {
     return fetch(`${remoteURL}/messages/${id}`).then(result => result.json())
   },
   getAll() {
-    return fetch(`${remoteURL}/messages`).then(result => result.json())
+    const user = localStorage.getItem("credentials")
+    const userId = parseInt(user)
+    return fetch(`${remoteURL}/messages?userId=${userId}&_sort=timestamp&_order=desc`).then(result => result.json())
   },
   post(newMessage) {
     return fetch(`${remoteURL}/messages`, {

@@ -11,6 +11,7 @@
             newMessageInput: "",
         }
 
+
         // Gets all messages from the API
     componentDidMount(){
         console.log("MESSAGE LIST: ComponentDidMount");
@@ -28,12 +29,15 @@
     handleFieldChange = evt => {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
-        // The above line saves whatever is in input to newMessageInput in state
+        // StateToChange is an object. The key is the "newMessageInput" and the value is the value of the input field.
+
+        // The above line saves whatever is in input to newMessageInput in state. setState must be given an object.
         this.setState(stateToChange);
     };
 
     // Adds a new message to message list
     constructNewMessage = evt => {
+        // prevents from redirecting away from page
         evt.preventDefault();
         if (this.state.newMessageInput === "") {
             window.alert("Please input a message");
@@ -49,17 +53,28 @@
                 userId: userId,
                 timeStamp: new Date().toISOString()
             };
-            // Assign the current messages list into newMessageArray
-            const newMessageArray = this.state.messages
-            // Add the newMessage object to the array
-            newMessageArray.push(newMessage)
-            // Update the whole newMessageArray
-            this.setState({
-                loadingStatus: true,
-                messages: newMessageArray
-            });
-// Do the fetch call to post this
+
+            // Do the fetch call to post this and need .thens cuz I don't want it to continue executing before the item is posted
             MessageManager.post(newMessage)
+                .then(() => MessageManager.getAll())
+                    .then((gotAllMessages) => {
+                        console.log(gotAllMessages)
+                        this.setState({
+                            messages: gotAllMessages
+                        })
+                    })
+
+            // Assign the current messages list into newMessageArray
+            // const newMessageArray = this.state.messages
+            // // Add the newMessage object to the array
+            // newMessageArray.push(newMessage)
+            // // Update the whole newMessageArray
+            // this.setState({
+            //     // loadingStatus: true,
+            //     messages: newMessageArray
+            // });
+
+            //.then > Do a get > .then setstate
 
         }
     };
@@ -94,7 +109,7 @@
                     </form>
                 </section>
                 <div className="container-cards">
-                    {this.state.messages.map(eachMessage => <MessageCard key={eachMessage.id} messages={eachMessage}/>)}
+                    {this.state.messages.map(eachMessage => <MessageCard key={eachMessage.id} messages={eachMessage} {...this.props}/>)}
                 </div>
             </React.Fragment>
         )
