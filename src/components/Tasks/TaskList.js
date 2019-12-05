@@ -32,6 +32,14 @@ class TaskList extends Component {
     })
   }
 
+  handleCheckbox = (isChecked) => {
+    console.log("Is Checked:", isChecked);
+    
+    
+
+
+  }
+
   render() {
     console.log("Task List: Render");
 
@@ -44,9 +52,12 @@ class TaskList extends Component {
         </section>
         <div className="container-cards">
           {this.state.tasks.map(task =>
+          
             <TaskCard key={task.id} 
             task={task}
             deleteTask={this.deleteTask}
+            handleCheckbox={this.handleCheckbox}
+            {...this.props}
             />
           )}
         </div>
