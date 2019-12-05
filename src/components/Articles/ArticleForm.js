@@ -24,13 +24,15 @@ class ArticleForm extends Component {
             window.alert("Please input an article title, synopsis and Url");
         } else {
             this.setState({ loadingStatus: true });
-            const user = localStorage.getItem("credentials")
-            const userId = parseInt(user)
+            // const user = localStorage.getItem("credentials")
+            // const userId = parseInt(user)
+            const userId = JSON.parse(localStorage.getItem("credentials"))
+
             const article = {
                 title: this.state.title,
                 synopsis: this.state.synopsis,
                 url: this.state.url,
-                userId: userId,
+                userId: userId.id,
                 timestamp: new Date().toISOString()
             };
             ArticleManager.post(article)

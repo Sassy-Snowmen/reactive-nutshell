@@ -17,7 +17,7 @@ class LogIn extends Component {
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
-    handleRegistration = () => {
+    handleLogin = () => {
         ArticleManager.searchUser(this.state.email)
             .then((existingUser) => {
                 if (existingUser.length === 0) {
@@ -51,9 +51,9 @@ class LogIn extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleRegistration}>
+            <form onSubmit={this.handleLogin}>
                 <fieldset>
-                    <h3>Register Account</h3>
+                    <h3>Login</h3>
                     <div className="formgrid">
                         <input onChange={this.handleFieldChange} type="email"
                             id="email"

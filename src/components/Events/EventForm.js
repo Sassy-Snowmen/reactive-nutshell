@@ -24,13 +24,14 @@ class EventForm extends Component {
       window.alert("Please fill out all fields");
     } else {
       this.setState({ loadingStatus: true });
-      const user = localStorage.getItem("credentials")
-      const userId = parseInt(user)
+      // const user = localStorage.getItem("credentials")
+      // const userId = parseInt(user)
+      const userId = JSON.parse(localStorage.getItem("credentials"))
       const event = {
         eventName: this.state.eventName,
         date: this.state.date,
         location: this.state.location,
-        userId: userId
+        userId: userId.id
       };
 
       EventManager.post(event).then(() => this.props.history.push("/events"));

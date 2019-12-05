@@ -28,10 +28,12 @@ class TaskForm extends Component {
             window.alert("Please input a task");
         } else {
             this.setState({ loadingStatus: true });
-            const user = localStorage.getItem("credentials")
-            const userId = parseInt(user)
+            // const user = localStorage.getItem("credentials")
+            // const userId = parseInt(user)
+            const userId = JSON.parse(localStorage.getItem("credentials"))
+
             const newTask = {
-                userId: userId,
+                userId: userId.id,
                 task: this.state.taskName,
                 completionDate: this.state.date,
                 completed: false

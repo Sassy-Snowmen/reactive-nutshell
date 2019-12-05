@@ -23,6 +23,7 @@ class Nutshell extends Component {
     this.setState({
       user: this.isAuthenticated()
     });
+    // this.props.history.push("/register")
   }
   componentDidMount() {
     this.setState({
@@ -33,8 +34,8 @@ class Nutshell extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar clearUser = {this.clearUser}/>
-        <ApplicationViews setUser = {this.setUser}/>
+        <NavBar clearUser = {this.clearUser} user={this.state.user}/>
+        <ApplicationViews setUser = {this.setUser} user={this.state.user}/>
       </React.Fragment>
     );
   }

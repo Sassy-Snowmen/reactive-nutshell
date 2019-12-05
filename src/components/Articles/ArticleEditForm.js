@@ -22,15 +22,15 @@ class ArticleEditForm extends Component {
     updateExistingArticle = evt => {
         evt.preventDefault()
         this.setState({ loadingStatus: true });
-        const user = localStorage.getItem("credentials")
-        const userId = parseInt(user)
+        const userId = JSON.parse(localStorage.getItem("credentials"))
+
         const editedArticle = {
             id: this.props.match.params.articleId,
             title: this.state.title,
             synopsis: this.state.synopsis,
             timestamp: this.state.timestamp,
             url: this.state.url,
-            userId: userId
+            userId: userId.id
         };
 
         ArticleManager.update(editedArticle)
