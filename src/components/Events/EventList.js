@@ -20,6 +20,16 @@ class EventList extends Component {
     });
   }
 
+  deleteEvent = id => {
+    EventManager.delete(id).then(() => {
+      EventManager.getAll().then(newEvents => {
+        this.setState({
+          events: newEvents
+        });
+      });
+    });
+  };
+
   render() {
     console.log("EVENT LIST: Render", this.props);
     // When using .map (which is like forEach), each child in the list must have a unique key prop. Because EventCard is included in the render of EventList, it is considered a child of EventList.
@@ -38,7 +48,11 @@ class EventList extends Component {
 
         <div className="container-cards">
           {this.state.events.map(eachEvent => (
-            <EventCard key={eachEvent.id} event={eachEvent} />
+            <EventCard
+              key={eachEvent.id}
+              event={eachEvent}
+              deleteEvent={this.deleteEvent}
+            />
           ))}
         </div>
       </React.Fragment>
