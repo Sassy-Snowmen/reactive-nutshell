@@ -8,8 +8,10 @@
         state = {
             messages: [],
             loadingStatus: false,
+            newMessageInput: "",
         }
 
+        // Gets all messages from the API
     componentDidMount(){
         console.log("MESSAGE LIST: ComponentDidMount");
         //getAll from MessageManager and hang on to that data; put it in state
@@ -21,26 +23,44 @@
         })
     }
 
+    // This function captures what's in the input field
+
     handleFieldChange = evt => {
         const stateToChange = {};
         stateToChange[evt.target.id] = evt.target.value;
+        // The above line saves whatever is in input to newMessageInput in state
         this.setState(stateToChange);
     };
 
+    // Adds a new message to message list
     constructNewMessage = evt => {
         evt.preventDefault();
-        if (this.state.messages === "") {
+        if (this.state.newMessageInput === "") {
             window.alert("Please input a message");
         } else {
-            // const newMessage = document.getElementById("newMessageInput").value
-            this.setState({ loadingStatus: true });
-            const newMessage = {
-                messages: this.state.newMessage
-            };
 
-            // Create the animal and redirect user to animal list
+            // This sets up local storage
+            const user = localStorage.getItem("credentials")
+            const userId = parseInt(user)
+
+            // Create a new object
+            const newMessage = {
+                messages: this.state.newMessageInput,
+                userId: userId,
+                timeStamp: new Date().toISOString()
+            };
+            // Assign the current messages list into newMessageArray
+            const newMessageArray = this.state.messages
+            // Add the newMessage object to the array
+            newMessageArray.push(newMessage)
+            // Update the whole newMessageArray
+            this.setState({
+                loadingStatus: true,
+                messages: newMessageArray
+            });
+// Do the fetch call to post this
             MessageManager.post(newMessage)
-            .then(() => this.props.history.push("/messages"));
+
         }
     };
 
