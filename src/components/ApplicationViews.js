@@ -8,7 +8,6 @@ import TaskForm from "./Tasks/TaskForm"
 import TaskEditForm from "./Tasks/TaskEditForm"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
-import TaskCard from "./Tasks/TaskCard"
 import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from './Articles/ArticleForm';
