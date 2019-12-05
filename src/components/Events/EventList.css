@@ -1,3 +1,5 @@
 .event-card:first-child {
     background-color: lightgray;
+    font-weight: bolder;
+    font-size: 150%;
 }
