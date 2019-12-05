@@ -8,6 +8,7 @@ import TaskForm from "./Tasks/TaskForm"
 import TaskEditForm from "./Tasks/TaskEditForm"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
+import Register from './Auth/Register'
 import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from "./Articles/ArticleForm";
@@ -37,7 +38,6 @@ export default class ApplicationViews extends Component {
         <Route path="/articles/:articleId(\d+)/edit" render={props => {
           return <ArticleEditForm {...props} />
         }}
-
         />
 
         <Route
@@ -97,6 +97,12 @@ export default class ApplicationViews extends Component {
           path="/events/:eventId(\d+)/edit"
           render={props => {
             return <EventEditForm {...props} />;
+          }}
+        />
+
+        <Route
+          path="/register" render={props => {
+            return <Register setUser={this.props.setUser} {...props}{...this.props}/>
           }}
         />
 
