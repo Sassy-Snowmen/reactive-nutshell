@@ -5,9 +5,9 @@ import MessageList from "./Messages/MessageList";
 import EventCard from "./Events/EventCard";
 import TaskList from "./Tasks/TaskList"
 import TaskForm from "./Tasks/TaskForm"
+import TaskEditForm from "./Tasks/TaskEditForm"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
-import TaskCard from "./Tasks/TaskCard"
 import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from './Articles/ArticleForm';
@@ -27,13 +27,14 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+
         <Route path="/articles/new" render={(props) => {
           return <ArticleForm {...props} />
         }} />
 
         <Route path="/articles/:articleId(\d+)/edit" render={props => {
-           return <ArticleEditForm {...props} />
-          }}
+          return <ArticleEditForm {...props} />
+        }}
         />
 
         <Route
@@ -59,8 +60,8 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/tasks" render={props => {
-            return <TaskList {...props}/>
+          exact path="/tasks" render={props => {
+            return <TaskList {...props} />
             // Remove null and return the component which will show the user's tasks
           }}
         />
@@ -70,7 +71,13 @@ export default class ApplicationViews extends Component {
 
             return <TaskForm {...props} />
           }}
-          />
+        />
+
+        <Route
+          path="/tasks/:taskId(\d+)/edit" render={props => {
+            return <TaskEditForm {...props} />
+          }}
+        />
 
         <Route
           path="/events" render={props => {
@@ -79,7 +86,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-  
+
 
       </React.Fragment>
     );
