@@ -1,7 +1,8 @@
+// author: Michelle Johnson
 import React, { Component } from "react"
 import ArticleManager from "../../Modules/ArticleManager"
 
-class Register extends Component {
+class LogIn extends Component {
 
     // Set initial state
     state = {
@@ -31,7 +32,7 @@ class Register extends Component {
                             this.props.history.push("/")
                         })
                 } else {
-                    window.alert("User already has an account")
+                    window.alert("User needs to register new user")
                 }
             }
             )
@@ -67,7 +68,7 @@ class Register extends Component {
                         <label htmlFor="inputPassword">Password</label>
                     </div>
                     <button type="submit">
-                        Register
+                        Log In
             </button>
                 </fieldset>
             </form>
@@ -76,4 +77,4 @@ class Register extends Component {
 
 }
 
-export default Register
+export default LogIn
