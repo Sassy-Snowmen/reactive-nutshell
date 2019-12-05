@@ -20,12 +20,14 @@ class EventEditForm extends Component {
     updateExistingEvent = evt => {
       evt.preventDefault()
       this.setState({ loadingStatus: true });
+      const user = localStorage.getItem("credentials")
+      const userId = parseInt(user)
       const editedEvent = {
         id: this.props.match.params.eventId,
         eventName: this.state.eventName,
         date: this.state.date,
         location: this.state.location,
-        userId: this.state.userId
+        userId: userId
       };
 
       EventManager.update(editedEvent)
