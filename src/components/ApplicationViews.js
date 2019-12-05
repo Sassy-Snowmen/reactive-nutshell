@@ -15,6 +15,7 @@ import ArticleEditForm from "./Articles/ArticleEditForm";
 import EventForm from "./Events/EventForm";
 import EventEditForm from "./Events/EventEditForm"
 
+
 export default class ApplicationViews extends Component {
   render() {
     return (
@@ -57,9 +58,9 @@ export default class ApplicationViews extends Component {
         />
 
         <Route
-          path="/messages"
-          render={props => {
-            return <MessageCard />;
+          path="/messages" render={props => {
+            return <MessageList {...props}/>
+            // Remove null and return the component which will show the messages
           }}
         />
 
@@ -91,7 +92,6 @@ export default class ApplicationViews extends Component {
             return <EventForm {...props} />;
           }}
         />
-
 
         <Route
           path="/events/:eventId(\d+)/edit"
