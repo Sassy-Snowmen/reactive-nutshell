@@ -20,10 +20,10 @@ class TaskEditForm extends Component {
     updateExistingTask= evt => {
       evt.preventDefault()
       this.setState({ loadingStatus: true });
-      const user = localStorage.getItem("credentials")
-      const userId = parseInt(user)
+      const userId = JSON.parse(localStorage.getItem("credentials"))
+
       const editedTask = {
-        userId: userId,
+        userId: userId.id,
         id: this.props.match.params.taskId,
         task: this.state.taskName,
         completionDate: this.state.date,

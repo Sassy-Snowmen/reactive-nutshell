@@ -17,22 +17,21 @@ class LogIn extends Component {
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
-    handleRegistration = () => {
+   
+    handleLogin = (e) => {
+        e.preventDefault()
+
         ArticleManager.searchUser(this.state.email)
             .then((existingUser) => {
                 if (existingUser.length === 0) {
-                    const userObj = {
-                        username: this.state.username,
-                        email: this.state.email,
-                        password: this.state.password,
-                    }
-                    ArticleManager.postNewUser(userObj)
-                        .then(newUser => {
-                            this.props.setUser(newUser)
-                            this.props.history.push("/")
-                        })
+                    alert("User does not have an account")
                 } else {
-                    window.alert("User needs to register new user")
+                    existingUser.forEach(user => {
+                        this.props.setUser(user)
+                        
+                    });
+                    this.props.history.push("/")
+
                 }
             }
             )
@@ -43,17 +42,13 @@ class LogIn extends Component {
 
             })
     }
-    handleLogin = (e) => {
-        e.preventDefault()
-        this.searchUsers()
-
-    }
+   
 
     render() {
         return (
-            <form onSubmit={this.handleRegistration}>
+            <form onSubmit={this.handleLogin}>
                 <fieldset>
-                    <h3>Register Account</h3>
+                    <h3>Login</h3>
                     <div className="formgrid">
                         <input onChange={this.handleFieldChange} type="email"
                             id="email"

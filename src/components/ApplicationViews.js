@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 // import MessageCard from "./Messages/MessageCard";
 import MessageList from "./Messages/MessageList";
@@ -15,6 +15,7 @@ import ArticleForm from "./Articles/ArticleForm";
 import ArticleEditForm from "./Articles/ArticleEditForm";
 import EventForm from "./Events/EventForm";
 import EventEditForm from "./Events/EventEditForm"
+import LogIn from "./Auth/LogIn";
 
 
 export default class ApplicationViews extends Component {
@@ -25,7 +26,11 @@ export default class ApplicationViews extends Component {
           exact
           path="/"
           render={props => {
-            return <ArticleList {...props} />;
+            if (this.props.user) {
+              return <ArticleList {...props} />;
+            } else {
+              return <Redirect to="/register" />
+            }
             // Remove null and return the component which will show news articles
           }}
         />
@@ -34,6 +39,7 @@ export default class ApplicationViews extends Component {
         <Route path="/articles/new" render={(props) => {
           return <ArticleForm {...props} />
         }} />
+
 
         <Route path="/articles/:articleId(\d+)/edit" render={props => {
           return <ArticleEditForm {...props} />
@@ -52,14 +58,23 @@ export default class ApplicationViews extends Component {
         <Route
           path="/friends"
           render={props => {
-            return <FriendList />;
+            if (this.props.user) {
+              return <FriendList {...props} />;
+            } else {
+              return <Redirect to="/register" />
+            }
             // Remove null and return the component which will show list of friends
           }}
         />
 
         <Route
           path="/messages" render={props => {
-            return <MessageList {...props}/>
+
+            if (this.props.user === true) {
+              return <MessageList {...props} />;
+            } else {
+              return <Redirect to="/register" />
+            }
             // Remove null and return the component which will show the messages
 
           }}
@@ -67,16 +82,25 @@ export default class ApplicationViews extends Component {
 
         <Route
           exact path="/tasks" render={props => {
-            return <TaskList {...props} />
-        
+            if (this.props.user) {
+              return <TaskList {...props} />;
+            } else {
+              return <Redirect to="/register" />
+            }
           }}
         />
-
+        <Route path="/task/new" render={(props) => {
+          return <TaskForm {...props} />
+        }} />
         <Route
           exact
           path="/events"
           render={props => {
-            return <EventList {...props} />;
+            if (this.props.user) {
+              return <EventList {...props} />;
+            } else {
+              return <Redirect to="/register" />
+            }
           }}
         />
 
@@ -103,7 +127,21 @@ export default class ApplicationViews extends Component {
 
         <Route
           path="/register" render={props => {
-            return <Register setUser={this.props.setUser} {...props}{...this.props}/>
+            if (this.props.user) {
+              return <Redirect to="/" />
+            } else {
+              return <Register setUser={this.props.setUser} {...props}{...this.props} />
+            }
+          }}
+        />
+
+        <Route
+          path="/Login" render={props => {
+            if (this.props.user) {
+              return <Redirect to="/" />
+            } else {
+              return <LogIn setUser={this.props.setUser} {...props}{...this.props} />
+            }
           }}
         />
 

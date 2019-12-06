@@ -1,6 +1,8 @@
 // author: Michelle Johnson
 import React, { Component } from "react"
 import ArticleManager from "../../Modules/ArticleManager"
+import { Link } from "react-router-dom"
+
 
 class Register extends Component {
 
@@ -45,8 +47,12 @@ class Register extends Component {
                         ArticleManager.postNewUser(userObj)
                             .then(newUser => {
                                 ArticleManager.getRegisteredUser(this.state.email)
-                                    .then(user => {
-                                        this.props.setUser(user)
+                                    .then(users => {
+                                        console.log("usrs",users)
+                                        users.forEach(user => {
+                                            this.props.setUser(user)
+                                            
+                                        });
                                         this.props.history.push("/")
                                     })
                             })
@@ -57,11 +63,7 @@ class Register extends Component {
                 )
         }
     }
-    // searchUsers = (e) => {
-    //     return ArticleManager.searchUser(this.state.email)
-    //         .then((existingUser) => {
-
-    //         })
+   
 
     handleLogin = (e) => {
         e.preventDefault()
@@ -102,40 +104,11 @@ class Register extends Component {
                     <button type="submit">
                         Register
                     </button>
-                    {/* <br />
-                    <br />
-                    <div>Already have an account</div> */}
+                    <Link className="nav-link" to="/Login">Already Have An Account</Link>
                 </fieldset>
             </form>
         )
     }
 }
-
-    // checkPassword = function checkPassword(form) {
-    //     password = password.value;
-    //     confirmPasswork = confirmPassword.value;
-
-    //     // If password not entered 
-    //     if (password == '') {
-    //         alert("Please enter Password");
-    //     }
-    //     // If confirm password not entered 
-    //     else if (confirmPassword == '') {
-    //         alert("Please enter confirm password");
-    //     }
-    //     // If Not same return False.     
-    //     else if (password != confirmPassword) {
-    //         alert("Password did not match: Please try again...")
-    //         return false;
-    //     }
-
-    //     // If same return True. 
-    //     else {
-    //         alert("Password Match: Welcome to Nutshell!")
-    //         return true;
-    //     }
-    // }
-
-
 
     export default Register

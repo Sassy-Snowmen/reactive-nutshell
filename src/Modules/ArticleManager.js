@@ -6,9 +6,11 @@ export default {
     return fetch(`${remoteURL}/articles/${id}`).then(result => result.json())
   },
   getAll() {
-    const user = localStorage.getItem("credentials")
-    const userId = parseInt(user)
-    return fetch(`${remoteURL}/articles?userId=${userId}&_sort=timestamp&_order=desc`).then(result => result.json())
+    const userId = JSON.parse(localStorage.getItem("credentials"))
+    // console.log(user)
+    // const userId = parseInt(user)
+    console.log(userId.id)
+    return fetch(`${remoteURL}/articles?userId=${userId.id}&_sort=timestamp&_order=desc`).then(result => result.json())
   },
   delete(id) {
     return fetch(`http://localhost:5002/articles/${id}`, {
