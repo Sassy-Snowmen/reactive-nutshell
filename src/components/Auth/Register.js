@@ -23,15 +23,15 @@ class Register extends Component {
     }
     handleRegistration = (e) => {
         e.preventDefault()
-        if (this.state.password == '') {
+        if (this.state.password === '') {
             alert("Please enter Password");
         }
         // If confirm password not entered 
-        else if (this.state.confirmPassword == '') {
+        else if (this.state.confirmPassword === '') {
             alert("Please enter confirm password");
         }
         // If Not same return False.     
-        else if (this.state.password != this.state.confirmPassword) {
+        else if (this.state.password !== this.state.confirmPassword) {
             alert("Password did not match: Please try again...")
             return false;
         } else {
@@ -64,12 +64,6 @@ class Register extends Component {
         }
     }
    
-
-    handleLogin = (e) => {
-        e.preventDefault()
-        this.searchUsers()
-
-    }
 
     render() {
         return (

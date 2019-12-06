@@ -1,15 +1,12 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
-// import MessageCard from "./Messages/MessageCard";
 import MessageList from "./Messages/MessageList";
-import EventCard from "./Events/EventCard";
 import TaskList from "./Tasks/TaskList"
 import TaskForm from "./Tasks/TaskForm"
 import TaskEditForm from "./Tasks/TaskEditForm"
 import FriendList from "./Friends/FriendList";
 import ArticleList from "./Articles/ArticleList";
 import Register from './Auth/Register'
-import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from "./Articles/ArticleForm";
 import ArticleEditForm from "./Articles/ArticleEditForm";
