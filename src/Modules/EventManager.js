@@ -8,6 +8,7 @@ export default {
   },
 
 //   Fetch call to get all events
+
 getAll() {
     const user = localStorage.getItem("credentials")
     const userId = parseInt(user)
