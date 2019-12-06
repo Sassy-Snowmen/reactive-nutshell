@@ -18,7 +18,9 @@ class FriendForm extends Component {
     constructNewFriend = evt => {
         evt.preventDefault();
         if (
+
             this.state.username === "" || this.state.email === ""
+
         ) {
             window.alert("Please input an friend username and email");
         } else {
@@ -26,8 +28,10 @@ class FriendForm extends Component {
             const userId = JSON.parse(localStorage.getItem("credentials"))
 
             const friend = {
+
                 username: this.state.username,
                 email: this.state.email,
+
                 userId: userId.id,
             };
             FriendManager.post(friend)
