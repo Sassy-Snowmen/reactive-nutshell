@@ -21,8 +21,11 @@ class Register extends Component {
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
+
+    // the logic to handle registration. This calls functions from Article manager.
     handleRegistration = (e) => {
         e.preventDefault()
+        // if statements for validating password
         if (this.state.password === '') {
             alert("Please enter Password");
         }
@@ -34,9 +37,13 @@ class Register extends Component {
         else if (this.state.password !== this.state.confirmPassword) {
             alert("Password did not match: Please try again...")
             return false;
-        } else {
+        } else 
+        // posts new user to database if the user does not already exist
+        {
+            // search for user in database
             ArticleManager.searchUser(this.state.email)
                 .then((existingUser) => {
+                    // if user does not exist, then post them to the database as a new user
                     if (existingUser.length === 0) {
                         this.setState({ loadingStatus: true })
                         const userObj = {
@@ -44,19 +51,22 @@ class Register extends Component {
                             email: this.state.email,
                             password: this.state.password,
                         }
+                        // post user to database
                         ArticleManager.postNewUser(userObj)
                             .then(newUser => {
+                                // get user that we just posted
                                 ArticleManager.getRegisteredUser(this.state.email)
                                     .then(users => {
-                                        console.log("usrs",users)
                                         users.forEach(user => {
+                                            // call the set user function from nutshell.js to set local storage.
                                             this.props.setUser(user)
-                                            
                                         });
+                                        // then once the local storage is set, then take the user to the articles page
                                         this.props.history.push("/")
                                     })
                             })
                     } else {
+                        // if the search user function come back with a user, then alert the user that they already have an account
                         window.alert("User already has an account")
                     }
                 }
@@ -75,6 +85,18 @@ class Register extends Component {
                     <h3>Register Account</h3>
                     <div className="formgrid">
                         <input onChange={this.handleFieldChange} type="text"
+                        /* if you are doing an input, and you want the content that the user is putting in the input box to be saved in state, then your ID in you input box has to match the state key. See below for example.
+
+                        State = {
+                            key: name
+                        } 
+
+                        <input onChange={this.handleFieldChange} type="text"
+                            id="key"
+                            placeholder="Enter text"
+                            required="" autoFocus="" />
+                            
+                        */
                             id="username"
                             placeholder="User Name"
                             required="" autoFocus="" />
