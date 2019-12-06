@@ -10,9 +10,11 @@ export default {
 //   Fetch call to get all events
 
 getAll() {
-    const user = localStorage.getItem("credentials")
-    const userId = parseInt(user)
-    return fetch(`${remoteURL}/events?userId=${userId}&_sort=date&_order=asc`).then(result => result.json())
+    // const user = localStorage.getItem("credentials")
+    // const userId = parseInt(user)
+    const userId = JSON.parse(localStorage.getItem("credentials"))
+
+    return fetch(`${remoteURL}/events?userId=${userId.id}&_sort=date&_order=asc`).then(result => result.json())
   },
 
   post(newEvent) {

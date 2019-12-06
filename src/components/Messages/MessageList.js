@@ -44,13 +44,15 @@
         } else {
 
             // This sets up local storage
-            const user = localStorage.getItem("credentials")
-            const userId = parseInt(user)
+            const userId = JSON.parse(localStorage.getItem("credentials"))
+
+            // const user = localStorage.getItem("credentials")
+            // const userId = parseInt(user)
 
             // Create a new object
             const newMessage = {
                 messages: this.state.newMessageInput,
-                userId: userId,
+                userId: userId.id,
                 timeStamp: new Date().toISOString()
             };
 
