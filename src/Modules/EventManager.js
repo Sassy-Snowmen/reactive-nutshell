@@ -8,8 +8,11 @@ export default {
   },
 
 //   Fetch call to get all events
-  getAll() {
-    return fetch(`${remoteURL}/events?_sort=date&_order=asc`).then(result => result.json())
+
+getAll() {
+    const user = localStorage.getItem("credentials")
+    const userId = parseInt(user)
+    return fetch(`${remoteURL}/events?userId=${userId}&_sort=date&_order=asc`).then(result => result.json())
   },
 
   post(newEvent) {
