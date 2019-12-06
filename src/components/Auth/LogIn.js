@@ -17,7 +17,7 @@ class LogIn extends Component {
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
-   
+
     handleLogin = (e) => {
         e.preventDefault()
 
@@ -26,23 +26,16 @@ class LogIn extends Component {
                 if (existingUser.length === 0) {
                     alert("User does not have an account")
                 } else {
-                    existingUser.forEach(user => {
+                    const user = existingUser[0]
+                    if (user.password === this.state.password) {
                         this.props.setUser(user)
-                        
-                    });
-                    this.props.history.push("/")
-
+                        this.props.history.push("/")
+                    } else {
+                        alert("Incorrect Password, Try Again.")
+                    }
                 }
-            }
-            )
-    }
-    searchUsers = (e) => {
-        return ArticleManager.searchUser(this.state.email)
-            .then((existingUser) => {
-
             })
     }
-   
 
     render() {
         return (

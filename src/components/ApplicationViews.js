@@ -1,15 +1,14 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
-// import MessageCard from "./Messages/MessageCard";
 import MessageList from "./Messages/MessageList";
-import EventCard from "./Events/EventCard";
 import TaskList from "./Tasks/TaskList"
 import TaskForm from "./Tasks/TaskForm"
 import TaskEditForm from "./Tasks/TaskEditForm"
 import FriendList from "./Friends/FriendList";
+import FriendForm from "./Friends/FriendForm";
+import FriendsEditForm from "./Friends/FriendEditForm";
 import ArticleList from "./Articles/ArticleList";
 import Register from './Auth/Register'
-import MessageCard from "./Messages/MessageCard";
 import EventList from "./Events/EventList";
 import ArticleForm from "./Articles/ArticleForm";
 import ArticleEditForm from "./Articles/ArticleEditForm";
@@ -55,7 +54,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route
+        <Route exact
           path="/friends"
           render={props => {
             if (this.props.user) {
@@ -65,6 +64,15 @@ export default class ApplicationViews extends Component {
             }
             // Remove null and return the component which will show list of friends
           }}
+        />
+
+        <Route path="/friends/new" render={(props) => {
+          return <FriendForm {...props} />
+        }} />
+
+        <Route path="/friends/:friendId(\d+)/edit" render={props => {
+          return <FriendsEditForm {...props} />
+        }}
         />
 
         <Route
