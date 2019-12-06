@@ -67,6 +67,9 @@ class Register extends Component {
 
     render() {
         return (
+            <>
+            <br/>
+            <center><h1>Welcome to Reactive Nutshell!!!</h1></center>
             <form onSubmit={this.handleRegistration}>
                 <fieldset>
                     <h3>Register Account</h3>
@@ -101,6 +104,7 @@ class Register extends Component {
                     <Link className="nav-link" to="/Login">Already Have An Account</Link>
                 </fieldset>
             </form>
+            </>
         )
     }
 }

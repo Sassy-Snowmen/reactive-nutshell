@@ -26,6 +26,8 @@ class ArticleList extends Component {
 
     return (
       <>
+        <br/>
+        <center><strong></strong><em><h1>Articles</h1></em><strong></strong></center>
         <section className="section-content">
           <button type="button" className="btn" onClick={() => {this.props.history.push("/articles/new") }}>
             Add Article

@@ -7,8 +7,8 @@ class FriendCard extends Component {
     return (
       <div className="card">
         <div className="card-content">
-          <h3>Username: <span className="card-friendName">{this.props.friend.user.username}</span></h3>
-
+          <h3><span className="card-friendName">{this.props.friend.username}</span></h3>
+          <button type="button" onClick={() => {this.props.history.push(`/friends/${this.props.friend.id}/edit`)}}>Edit</button>
           <button type="button" onClick={() => this.props.deleteFriend(this.props.friend.id)}>Delete</button>
 
         </div>
