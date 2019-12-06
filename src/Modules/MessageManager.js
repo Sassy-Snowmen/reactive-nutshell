@@ -5,9 +5,11 @@ export default {
     return fetch(`${remoteURL}/messages/${id}`).then(result => result.json())
   },
   getAll() {
-    const user = localStorage.getItem("credentials")
-    const userId = parseInt(user)
-    return fetch(`${remoteURL}/messages?userId=${userId}&_sort=timestamp&_order=desc`).then(result => result.json())
+    const userId = JSON.parse(localStorage.getItem("credentials"))
+
+    // const user = localStorage.getItem("credentials")
+    // const userId = parseInt(user)
+    return fetch(`${remoteURL}/messages?userId=${userId.id}&_sort=timestamp&_order=desc`).then(result => result.json())
   },
   post(newMessage) {
     return fetch(`${remoteURL}/messages`, {
