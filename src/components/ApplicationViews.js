@@ -84,6 +84,7 @@ export default class ApplicationViews extends Component {
               return <Redirect to="/register" />
             }
             // Remove null and return the component which will show the messages
+
           }}
         />
 
