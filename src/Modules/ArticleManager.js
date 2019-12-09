@@ -36,6 +36,7 @@ export default {
       body: JSON.stringify(editedArticle)
     }).then(data => data.json());
   },
+  // Below this point is register and Login (this can be in it's own Manager or all fetch calls in one manager)
   searchUser(email){
     return fetch(`${remoteURL}/users?q=${email}`)
     .then(data => data.json());

@@ -11,6 +11,7 @@ class Nutshell extends Component {
 
   isAuthenticated = () => localStorage.getItem("credentials") !== null
 
+  // this function sets local storage upon register or login
   setUser = authObj => {
     localStorage.setItem("credentials", JSON.stringify(authObj))
     this.setState({
@@ -18,12 +19,12 @@ class Nutshell extends Component {
     })
   }
 
+  // this function clears local storage and directs the user to the register page
   clearUser = () => {
     localStorage.removeItem("credentials")
     this.setState({
       user: this.isAuthenticated()
     });
-    // this.props.history.push("/register")
   }
   componentDidMount() {
     this.setState({

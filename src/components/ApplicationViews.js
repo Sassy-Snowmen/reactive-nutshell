@@ -143,6 +143,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
+        {/* this /login route renders the login component that is defined in login.js */}
         <Route
           path="/Login" render={props => {
             if (this.props.user) {
